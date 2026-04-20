@@ -1,0 +1,50 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+  background: var(--white);
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo {
+  font-family: 'Michroma', sans-serif;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.terra { color: var(--terracotta); }
+.kallpa { color: var(--black); }
+
+.nav-links { 
+  display: flex; 
+  list-style: none; 
+}
+
+.nav-links li { 
+  margin-left: 30px; 
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--black);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--terracotta);
+}
+
+/* Clase para resaltar la página actual */
+.active-link {
+  color: var(--terracotta) !important;
+}

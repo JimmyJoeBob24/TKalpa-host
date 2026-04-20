@@ -1,0 +1,260 @@
+/* --- ABOUT PRESENTATION STYLE (CAPAS SOBRE GRIS) --- */
+
+/* Contenedor principal sin snapping */
+.presentation-container {
+    width: 100%;
+}
+
+/* Estilo base de cada Diapositiva */
+.slide-section {
+    min-height: 80vh; /* Altura para el efecto de slide */
+    display: flex;
+    align-items: center; /* Centrado vertical del contenido */
+    position: relative;
+    overflow: hidden;
+    background-color: var(--white); /* Fondo por defecto blanco */
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* --- CLASE PARA ALTERNAR FONDO GRIS --- */
+.slide-gray {
+    background-color: var(--gray); /* Tu color gris global */
+}
+
+/* Alternar orden de imagen y texto */
+.slide-reverse {
+    flex-direction: row-reverse;
+}
+
+/* --- Área de Texto (Lado derecho por defecto) --- */
+.slide-content {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    z-index: 2; /* Texto por encima del fondo */
+}
+
+/* --- Área del Contenedor de Imagen (Lado izquierdo) --- */
+.slide-image-container {
+    flex: 1.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+    z-index: 3; /* Asegura que la tarjeta esté sobre el fondo gris */
+}
+
+/* --- LA TARJETA DEL LOGO QUE "FLOTA" (Pop-Out) --- */
+.logo-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 12px; /* Bordes suaves Sleek */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Sombra elegante */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eee; /* Borde sutil */
+    
+    /* Efecto de pop-out */
+    transform: translateY(-5px); 
+}
+
+/* Efecto hover interactivo */
+.logo-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+/* Estilo de la imagen del logo dentro de la tarjeta */
+.logo-img {
+    max-width: 100%;
+    max-height: 250px; /* Altura controlada */
+    object-fit: contain; /* Asegura que entre completo */
+}
+
+/* --- Estilos de Texto (Mismos de antes) --- */
+.content-wrapper { max-width: 500px; }
+
+.slide-number {
+    font-family: 'Michroma', sans-serif;
+    font-size: 0.8rem;
+    color: var(--terracotta);
+    letter-spacing: 3px;
+    display: block;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--terracotta);
+    width: 40px;
+    padding-bottom: 5px;
+}
+
+.slide-section h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.slide-section h2 {
+    font-family: 'Michroma', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    text-transform: uppercase;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+.slide-section p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    font-weight: 300;
+}
+
+.slide-section strong { font-weight: 600; color: var(--black); }
+
+.slide-btn {
+    display: inline-block;
+    margin-top: 40px;
+    font-family: 'Michroma', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: var(--terracotta);
+    transition: color 0.3s ease;
+}
+
+.slide-btn:hover { color: var(--black); }
+
+/* Responsivo para móviles */
+@media (max-width: 992px) {
+    .slide-section { flex-direction: column-reverse; }
+    .slide-reverse { flex-direction: column-reverse; }
+    .slide-image-container { padding: 20px; }
+    .logo-card { margin-bottom: 20px; padding: 20px; }
+    .logo-img { max-height: 150px; }
+    .slide-content { padding: 40px; }
+    .slide-section h2 { font-size: 1.8rem; }
+}
+
+/* --- ESTILO ESPECIAL: MARCO POLAROID / CUADRO (Slide 1) --- */
+
+/* Contenedor del marco */
+.frame-card {
+    background-color: var(--white);
+    padding: 20px; /* Borde interior blanco fino */
+    border-radius: 4px; /* Bordes menos redondeados, más rígidos */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra suave 'Pop-Out' */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    
+    /* Efecto de pop-out */
+    transform: translateY(-5px); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.frame-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* El recuadro interno donde va la foto */
+.frame-border {
+    width: 100%;
+    height: 100%;
+    max-height: 400px; /* Controla la altura máxima */
+    border: 1px solid #eee; /* Un pequeño borde interno para la foto */
+    overflow: hidden;
+    background-color: #f5f5f5; /* Fondo por si la imagen tarda en cargar */
+}
+
+/* Imagen dentro del marco */
+.frame-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Llenar el marco rectangular */
+    display: block;
+}
+
+/* El borde inferior ancho tipo Polaroid */
+.frame-caption {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: var(--black);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-top: 25px; /* Espacio generoso abajo */
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--terracotta); /* Acento terracota Sleek */
+    width: 80%; /* No ocupa todo el ancho */
+    text-align: center;
+}
+
+/* Responsivo para celulares (Slide 1) */
+@media (max-width: 992px) {
+    .frame-card {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    .frame-border {
+        max-height: 250px;
+    }
+    .frame-caption {
+        font-size: 0.7rem;
+        margin-top: 15px;
+    }
+}
+
+/* --- AJUSTE PARA LOGOS DUALES --- */
+
+.dual-logos {
+    display: flex;
+    flex-direction: column; /* Por defecto uno sobre otro para que luzcan grandes */
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+/* Si prefieres que estén lado a lado en pantallas grandes: */
+@media (min-width: 1200px) {
+    .dual-logos {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .dual-logos .logo-card {
+        flex: 1;
+        max-width: 250px; /* Evita que se estiren demasiado */
+    }
+}
+
+/* Retoque a logo-card para que se adapte al contenedor dual */
+.logo-card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+}
+
+.logo-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}

@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Inter:wght@300;400;600&display=swap');
+
+/* VARIABLES GLOBALES */
+:root {
+  --terracotta: #B22222;
+  --black: #1a1a1a;
+  --white: #ffffff;
+  --gray: #f4f4f4;
+  --light-gray: #f9f9f9;
+}
+
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--black);
+  background-color: var(--white);
+  animation: fadeInPage 1.2s ease-in forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInPage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- HERO SLIDESHOW STYLES --- */
+.hero {
+    position: relative;
+    height: 70vh; /* Altura de impacto para el inicio */
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* Fundido suave entre fotos */
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* Capa oscura (Overlay) para legibilidad del texto */
+.hero-slideshow::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.45); /* Un poco más oscuro para que el blanco resalte */
+    z-index: 2;
+}
+
+/* Contenedor de texto sobre el slider */
+.hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Michroma', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 15px;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+/* BOTONES SLEEK */
+.btn-main {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 35px;
+    background-color: var(--terracotta);
+    color: white;
+    text-decoration: none;
+    font-family: 'Michroma', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--terracotta);
+}
+
+.btn-main:hover {
+    background-color: transparent;
+    border-color: var(--white);
+}
+
+/* --- FOOTER MODERNO --- */
+footer {
+    background-color: var(--black);
+    padding: 40px 10%;
+    color: var(--white);
+    border-top: 1px solid #333;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-left {
+    font-family: 'Michroma', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-center {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-center p {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-right p {
+    font-size: 0.8rem;
+    color: #bbb;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-right {
+        text-align: center;
+    }
+    .hero {
+        height: 60vh;
+    }
+}
